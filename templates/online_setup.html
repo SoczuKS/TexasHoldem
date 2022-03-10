@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form id="online_setup_form" action="#" method="post">
+    <label>Nazwa pokoju
+        <input name="game_name" type="text" required>
+    </label>
+    <label>Ilość graczy
+        <input name="number_of_players" type="number" min="2" max="8" value="2" required>
+    </label>
+    <label>Wpisowe
+        <input name="entry_fee" type="number" min="100" value="1000" step="50" required>
+    </label>
+    <label>Big blind
+        <input name="big_blind" type="number" min="2" step="2" value="10" required>
+    </label>
+    <button type="submit">Stwórz pokój</button>
+</form>
+
+<div id="main_menu" class="menu">
+    <div class="menu-item" data-url="{{ url_for('online_list') }}">
+        <a href="{{ url_for('online_list') }}">
+            <div>Wstecz</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

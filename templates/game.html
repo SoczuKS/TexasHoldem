@@ -1,0 +1,390 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<style>
+    :root {
+        --card-bg-url: url("{{ url_for('static', filename='card.png') }}");
+    }
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='game.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='game_rwd.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let gameId = '{{ game.id }}'
+</script>
+<script src="{{ url_for('static', filename='game.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+{% if not game.local %}
+<div id="player_name_div">
+    <label>Nazwa gracza<input type="text" id="player_name_input"></label>
+    <button id="player_name_button">Dołącz</button>
+</div>
+<div id="waiting_info">Oczekiwanie na wszystkich graczy...</div>
+{% else %}
+<button id="start_local_game_button">Rozpocznij</button>
+<div id="player_turn_info"></div>
+{% endif %}
+<div id="game_content">
+    <div id="game_board">
+        <div class="game_board_row">
+            <div class="player_representation player1" id="player1_representation">
+                <div class="player_name player1"></div>
+                <div class="player_money player1"></div>
+            </div>
+            <div class="player_representation player2" id="player2_representation">
+                <div class="player_name player2"></div>
+                <div class="player_money player2"></div>
+            </div>
+        </div>
+        <div class="game_board_row" id="game_board_row_table">
+            <div class="game_board_column">
+                <div class="player_representation player8" id="player8_representation">
+                    <div class="player_name player8"></div>
+                    <div class="player_money player8"></div>
+                </div>
+                <div class="player_representation player7" id="player7_representation">
+                    <div class="player_name player7"></div>
+                    <div class="player_money player7"></div>
+                </div>
+            </div>
+            <div id="game_table">
+                <div id="game_table_content">
+                    <div class="game_table_row">
+                        <div class="player_table_content player1" id="player1_table_content">
+                            <div class="bet_pot player1"></div>
+                            <div class="player_cards_button_container">
+                                <div class="player_cards player1">
+                                    <div class="card player1">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card player1">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player_buttons player1"></div>
+                            </div>
+                        </div>
+                        <div class="player_table_content player2" id="player2_table_content">
+                            <div class="bet_pot player2"></div>
+                            <div class="player_cards_button_container">
+                                <div class="player_cards player2">
+                                    <div class="card player2">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card player2">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player_buttons player2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_table_row">
+                        <div class="game_table_column">
+                            <div class="player_table_content player8" id="player8_table_content">
+                                <div class="bet_pot player8"></div>
+                                <div class="player_cards_button_container">
+                                    <div class="player_cards player8">
+                                        <div class="card player8">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card player8">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="player_buttons player8"></div>
+                                </div>
+                            </div>
+                            <div class="player_table_content player7" id="player7_table_content">
+                                <div class="bet_pot player7"></div>
+                                <div class="player_cards_button_container">
+                                    <div class="player_cards player7">
+                                        <div class="card player7">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card player7">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="player_buttons player7"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="game_table_middle_part">
+                            <div>
+                                <div id="deal_pot"></div>
+                                <div id="community_cards">
+                                    <div class="card community_card">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card community_card">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card community_card">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card community_card">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card community_card">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="game_table_column">
+                            <div class="player_table_content player3" id="player3_table_content">
+                                <div class="bet_pot player3"></div>
+                                <div class="player_cards_button_container">
+                                    <div class="player_cards player3">
+                                        <div class="card player3">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card player3">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="player_buttons player3"></div>
+                                </div>
+                            </div>
+                            <div class="player_table_content player4" id="player4_table_content">
+                                <div class="bet_pot player4"></div>
+                                <div class="player_cards_button_container">
+                                    <div class="player_cards player4">
+                                        <div class="card player4">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card player4">
+                                            <div class="card_top">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                            <div class="card_bottom">
+                                                <div class="card_rank"></div>
+                                                <div class="card_suit"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="player_buttons player4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game_table_row">
+                        <div class="player_table_content player6" id="player6_table_content">
+                            <div class="bet_pot player6"></div>
+                            <div class="player_cards_button_container">
+                                <div class="player_cards player6">
+                                    <div class="card player6">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card player6">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player_buttons player6"></div>
+                            </div>
+                        </div>
+                        <div class="player_table_content player5" id="player5_table_content">
+                            <div class="bet_pot player5"></div>
+                            <div class="player_cards_button_container">
+                                <div class="player_cards player5">
+                                    <div class="card player5">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card player5">
+                                        <div class="card_top">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                        <div class="card_bottom">
+                                            <div class="card_rank"></div>
+                                            <div class="card_suit"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player_buttons player5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="game_board_column">
+                <div class="player_representation player3" id="player3_representation">
+                    <div class="player_name player3"></div>
+                    <div class="player_money player3"></div>
+                </div>
+                <div class="player_representation player4" id="player4_representation">
+                    <div class="player_name player4"></div>
+                    <div class="player_money player4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="game_board_row">
+            <div class="player_representation player6" id="player6_representation">
+                <div class="player_name player6"></div>
+                <div class="player_money player6"></div>
+            </div>
+            <div class="player_representation player5" id="player5_representation">
+                <div class="player_name player5"></div>
+                <div class="player_money player5"></div>
+            </div>
+        </div>
+    </div>
+    <div id="action_buttons">
+        <button id="fold_button">Pas</button>
+        <button id="call_button"><span id="action_buttons_check_action_span">Sprawdź</span><br><span
+                id="call_value"></span></button>
+        <div id="raise_div">
+            <label>
+                <span>Stawka</span>
+                <input type="range" id="raise_input" min="0" max="500" step="2" value="0">
+                <span id="raise_value">$0</span>
+            </label>
+            <button id="raise_button">Podbij</button>
+        </div>
+        <button id="all_in_button">All-in<br><span id="all_in_value"></span></button>
+        {% if game.local %}
+        <button id="show_cards_button">Odsłoń karty</button>
+        {% endif %}
+    </div>
+</div>
+<div id="commands"></div>
+{% endblock %}

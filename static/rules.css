@@ -1,0 +1,45 @@
+#rules {
+    margin-top: 1em;
+    border: 2px solid black;
+    border-radius: 1.5em;
+    padding: 2.5em;
+}
+
+#rules > h3 {
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 0.25em;
+}
+
+#rules > h3:not(:first-child) {
+    margin-top: 1em;
+}
+
+#rules > ol {
+    list-style-type: decimal;
+    padding-left: 5em;
+}
+
+#rules > ol > li:not(:first-child) {
+    margin-top: 0.35em;
+}
+
+h4 {
+    font-size: 1.15em;
+    margin-bottom: 0.2em;
+    padding-left: 1.5em;
+}
+
+#hand_rankings li, #bet_rules li {
+    font-weight: 600;
+}
+
+#hand_rankings span, #bet_rules span {
+    font-weight: normal;
+    font-style: italic;
+}
+
+#hand_rankings span:before, #bet_rules span:before {
+    content: '\A';
+    display: block;
+}

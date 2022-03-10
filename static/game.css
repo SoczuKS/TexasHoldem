@@ -1,0 +1,333 @@
+#player_name_div {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+}
+
+#player_name_div > label {
+    margin-bottom: 0.5em;
+}
+
+#player_name_div > label > input {
+    margin-left: 0.5em;
+}
+
+#player_name_div > button {
+    width: 50%;
+    align-self: center;
+}
+
+#action_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    margin-top: 1em;
+}
+
+#action_buttons > *:not(:last-child) {
+    margin-right: 1em;
+}
+
+#fold_button, #call_button, #all_in_button {
+    width: 5rem;
+}
+
+#raise_div {
+    display: flex;
+    flex-direction: column;
+}
+
+#raise_div > label {
+    display: flex;
+}
+
+#raise_div > label > span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#raise_div > label > input {
+    margin-left: 0.75em;
+    margin-right: 0.75em;
+}
+
+#game_board {
+    width: 80vw;
+    height: 40vw;
+    display: flex;
+    align-self: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: 0.5em;
+}
+
+#game_board > *:not(:nth-child(2)) {
+    width: 80%;
+    align-self: center;
+}
+
+#game_board > *:nth-child(1) {
+    margin-bottom: 1em;
+}
+
+#game_board > *:nth-child(3) {
+    margin-top: 1em;
+}
+
+.game_board_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#game_board_row_table {
+    height: 75%;
+}
+
+#game_table {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    border: 0.5em solid saddlebrown;
+    background-color: darkgreen;
+    border-radius: 40vw;
+    align-self: center;
+    justify-content: center;
+}
+
+.game_board_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#game_table_content {
+    width: 100%;
+    height: 90%;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.game_table_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#game_table_content .game_table_row:nth-child(2) {
+    height: 100%;
+}
+
+.game_table_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+#game_table_middle_part {
+    width: 80%;
+}
+
+#game_table_middle_part {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
+
+#game_table_middle_part > div {
+    display: flex;
+    flex-direction: column;
+}
+
+#deal_pot {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 2.5em;
+    margin-bottom: 0.5rem;
+}
+
+#community_cards {
+    display: flex;
+    flex-direction: row;
+}
+
+#community_cards > .card:not(:nth-last-child(1)) {
+    margin-right: 0.5rem;
+}
+
+.card {
+    width: 2em;
+    height: 3em;
+    border: 2px solid yellow;
+    background: var(--card-bg-url) round;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 2em;
+}
+
+.card_top, .card_bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-self: center;
+}
+
+.card_top {
+    flex-direction: row;
+    margin-top: 0.2em
+}
+
+.card_bottom {
+    flex-direction: row-reverse;
+    margin-bottom: 0.2em;
+}
+
+.bet_pot {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    font-size: 2em;
+}
+
+.player_representation {
+    font-size: 2em;
+}
+
+.player_cards {
+    display: flex;
+    flex-direction: row;
+}
+
+.player_cards .card {
+    width: 2em;
+    height: 2.5em;
+}
+
+.player_cards .card:nth-child(1) {
+    margin-right: 0.5rem;
+}
+
+.player_table_content {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
+}
+
+.player_table_content.player5, .player_table_content.player6 {
+    flex-direction: column;
+}
+
+.player1 .bet_pot, .player2 .bet_pot {
+    margin-top: 0.5rem;
+}
+
+.player5 .bet_pot, .player6 .bet_pot {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.player_table_content.player4, .player_table_content.player3 {
+    flex-direction: row;
+}
+
+.player_table_content.player8, .player_table_content.player7 {
+    flex-direction: row-reverse;
+}
+
+.player4 .bet_pot, .player3 .bet_pot {
+    margin-right: 0.5rem;
+}
+
+.player8 .bet_pot, .player7 .bet_pot {
+    margin-left: 0.5rem;
+}
+
+#game_content {
+    display: none;
+    flex-direction: column;
+}
+
+#commands {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 12em;
+    word-wrap: normal;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: end;
+    z-index: -1;
+}
+
+#commands > div:nth-last-child(1) {
+    font-weight: 600;
+}
+
+#waiting_info {
+    display: none;
+    align-self: center;
+}
+
+#commands #winner_info {
+    font-weight: 900;
+}
+
+#small_blind_button {
+    background-color: darkblue;
+    color: white;
+}
+
+#big_blind_button {
+    background-color: #FFCC00;
+    color: black;
+}
+
+#dealer_button {
+    background-color: aliceblue;
+    color: black
+}
+
+.player_cards_button_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.player_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player_buttons > .button:nth-child(2) {
+    margin-top: 0.5em;
+}
+
+.button {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    margin-left: 0.5em;
+    font-size: 0.75rem;
+}
+
+#player_turn_info {
+    align-self: center;
+    margin-bottom: 1rem;
+    font-size: 1.25em;
+    font-weight: 500;
+}

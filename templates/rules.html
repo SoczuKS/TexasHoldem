@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='rules.css') }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<h2 id="page_subtitle">Zasady</h2>
+
+<div id="rules">
+    <h3>Przebieg rozgrywki</h3>
+    <ol id="rules_list">
+        <li>Gracze oznaczenie SB i BB zmuszeni są do zagrania określonych dla danego stału zakładów w ciemno</li>
+        <li>Każdy gracz otrzymuje po dwie karty</li>
+        <li>Pierwsza tura licytacji zaczyna się od gracza za BB</li>
+        <li>Na stół dokłada się trzy karty</li>
+        <li>Druga tura licytacji zaczyna się od gracza oznaczonego SB</li>
+        <li>Na stół dokłada się czwartą kartę</li>
+        <li>Trzecia tura licytacji zaczyna się od gracza oznaczonego SB</li>
+        <li>Na stół dokłada się piątą kartę</li>
+        <li>Czwarta tura licytacji zaczyna się od gracza oznaczonego SB</li>
+        <li>Zwycięzcą zostaje/ą gracz/e, których układ złożony
+            z pięciu najmocniejszy kart z ręki i z kart wspólnych jest najsilniejszy na stole</li>
+    </ol>
+
+    <h3>Przebieg licytacji</h3>
+    <h4>Licytujący gracz ma cztery możliwości</h4>
+    <ol id="bet_rules">
+        <li>Czekać<span>Jeżeli jego obecna stawka jest równa stawce gracza przed nim</span></li>
+        <li>Sprawdzić<span>Wyrównać jego stawkę do stawki gracza przed nim</span></li>
+        <li>Podbić<span>Podwoić stawkę gracza przed nim</span></li>
+        <li>Zagrać za wszystko</li>
+    </ol>
+
+    <h3>Hierarchia układów</h3>
+    <ol id="hand_rankings">
+        <li>Poker królewski<span>A-K-Q-J-10 w kolorze (najwyższy możliwy poker)</span></li>
+        <li>Poker<span>Strit w kolorze</span></li>
+        <li>Kareta<span>Cztery karty tej samej wartości</span></li>
+        <li>Full<span>Trójka i para</span></li>
+        <li>Kolor<span>5 kart w kolorze</span></li>
+        <li>Strit<span>5 kart po kolei</span></li>
+        <li>Trójka</li>
+        <li>Dwie pary</li>
+        <li>Para</li>
+        <li>Wysoka karta</li>
+    </ol>
+</div>
+
+<div id="main_menu" class="menu">
+    <div class="menu-item" data-url="{{ url_for('index') }}">
+        <a href="{{ url_for('index') }}">
+            <div>Wstecz</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

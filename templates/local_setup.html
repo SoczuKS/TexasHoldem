@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='local_setup.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<form id="setup_form" action="#" method="post">
+    <label>Ilość graczy ludzkich
+        <input id="number_of_human_players" type="number" min="1" max="8" value="2" required>
+    </label>
+    <label>Ilość graczy AI
+        <input id="number_of_cpu_players" name="number_of_cpu_players" type="number" min="0" max="6" value="2" required>
+    </label>
+    <label>Wpisowe
+        <input name="entry_fee" type="number" min="100" value="1000" step="50" required>
+    </label>
+    <label>Big blind
+        <input name="big_blind" type="number" min="2" step="2" value="10" required>
+    </label>
+
+    <figure>
+        <figcaption>Nazwy graczy</figcaption>
+        <div id="human_players">
+            <label>Nazwa gracza 1
+                <input name="players[]" type="text" value="Gracz 1" required>
+            </label>
+            <label>Nazwa gracza 2
+                <input name="players[]" type="text" value="Gracz 2" required>
+            </label>
+        </div>
+    </figure>
+
+    <figure>
+        <figcaption>Typy graczy AI</figcaption>
+        <div id="cpu_players">
+            <label>Typ CPU 1
+                <select name="cpu_types[]">
+                    <option value="0">Ostrożny</option>
+                    <option value="1" selected>Normalny</option>
+                    <option value="2">Agresywny</option>
+                    <option value="3">Losowo</option>
+                </select>
+            </label>
+            <label>Typ CPU 2
+                <select name="cpu_types[]">
+                    <option value="0">Ostrożny</option>
+                    <option value="1" selected>Normalny</option>
+                    <option value="2">Agresywny</option>
+                    <option value="3">Losowo</option>
+                </select>
+            </label>
+        </div>
+    </figure>
+
+    <button type="submit">Stwórz pokój</button>
+</form>
+
+<div id="main_menu" class="menu">
+    <div class="menu-item" data-url="{{ url_for('mode_selector') }}">
+        <a href="{{ url_for('mode_selector') }}">
+            <div>Wstecz</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

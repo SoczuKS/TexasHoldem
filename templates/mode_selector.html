@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="main_menu" class="menu">
+    <div class="menu-item" data-url="{{ url_for('local_setup') }}">
+        <a href="{{ url_for('local_setup') }}">
+            <div>Gra lokalna</div>
+        </a>
+    </div>
+    <div class="menu-item" data-url="{{ url_for('online_list') }}">
+        <a href="{{ url_for('online_list') }}">
+            <div>Online</div>
+        </a>
+    </div>
+    <div class="menu-item" data-url="{{ url_for('index') }}">
+        <a href="{{ url_for('index') }}">
+            <div>Wstecz</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

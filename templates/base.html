@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Texas Hold'em Poker</title>
+        <meta name="author" content="Marta Soczyńska">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+        {% block styles %}
+        {% endblock %}
+
+        <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+                integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+                crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='app.js') }}"></script>
+        {% block scripts %}
+        {% endblock %}
+    </head>
+    <body>
+        <h1 id="game_title">Texas Hold'em Poker</h1>
+
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
